@@ -1,16 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Project homepage for Cameron Mason">
     <meta name="keywords" content="homepage, projects, contact, GitHub Pages">
     <meta name="author" content="Cameron Mason">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Cameron Mason Homepage</title>
+
+    <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
+
     <header>
         <h1>Welcome to My Homepage</h1>
+
         <nav>
             <ul>
                 <li><a href="#about">About</a></li>
@@ -19,22 +26,106 @@
             </ul>
         </nav>
     </header>
+
     <main>
+
         <section id="about">
             <h2>About</h2>
-            <p>Hello, my name is Cameron Mason. This homepage was created for my class project using HTML and GitHub Pages.</p>
+
+            <p>
+                Howdy! My name is Cameron Mason. This homepage was created
+                for my Web Design course using HTML, CSS, and GitHub Pages.
+                I am currently pursuing a Bachelor of Science in Information
+                Technology with a concentration in Software Development and
+                AI/Data Analytics.
+            </p>
         </section>
+
         <section id="projects">
             <h2>Projects</h2>
-            <p>This section will include information about projects I create while learning web and mobile application development.</p>
+
+            <table>
+
+                <caption>Featured Development Projects</caption>
+
+                <colgroup>
+                    <col class="firstColumn">
+                    <col>
+                    <col class="thirdColumn">
+                </colgroup>
+
+                <thead>
+                    <tr>
+                        <th>Project Name</th>
+                        <th>Description</th>
+                        <th>Project Image</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>Car Payment Calculator App</td>
+
+                        <td>
+                            Android application that calculates monthly car
+                            payments based on loan amount, interest rate,
+                            and loan term. The application validates user
+                            input and displays estimated payment information.
+                        </td>
+
+                        <td>
+                            <img src="car-payment.png"
+                                 alt="Car Payment Calculator App">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Local Bike Trail Explorer</td>
+
+                        <td>
+                            Mobile application concept designed to help users
+                            discover local bike trails, track ride progress,
+                            review trail conditions, and share information
+                            with other cyclists.
+                        </td>
+
+                        <td>
+                            <img src="bike-app.png"
+                                 alt="Bike Trail Explorer App">
+                        </td>
+                    </tr>
+
+                </tbody>
+
+                <tfoot>
+                    <tr>
+                        <td colspan="3">
+                            Additional projects will be added as I continue
+                            developing my programming and web design skills.
+                        </td>
+                    </tr>
+                </tfoot>
+
+            </table>
+
         </section>
+
         <section id="contact">
             <h2>Contact</h2>
-            <p>You can contact me through my school email or GitHub profile.</p>
+
+            <p>
+                You can contact me through my school email: cammas4974@students.ecpi or view additional
+                work through my GitHub repositories.
+            </p>
         </section>
+
     </main>
+
     <footer>
         <p>&copy; 2026 Cameron Mason. All rights reserved.</p>
     </footer>
+
 </body>
+
 </html>
