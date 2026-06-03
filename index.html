@@ -8,7 +8,7 @@
     <meta name="author" content="Cameron Mason">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Cameron Mason Homepage</title>
+    <title>Cameron Mason Professional Page</title>
 
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -110,7 +110,6 @@
             </table>
 
         </section>
-
         <section id="contact">
             <h2>Contact</h2>
 
@@ -118,8 +117,23 @@
                 You can contact me through my school email: cammas4974@students.ecpi or view additional
                 work through my GitHub repositories.
             </p>
-        </section>
 
+            <form class="contact-form" action="#" method="post">
+                <label for="senderName">Name</label>
+                <input type="text" id="senderName" name="senderName" required>
+
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="subject">Subject</label>
+                <input type="text" id="subject" name="subject">
+
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="5"></textarea>
+
+                <input type="submit" value="Send Message">
+            </form>
+        </section>
     </main>
 
     <footer>
