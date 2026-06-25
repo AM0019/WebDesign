@@ -1,4 +1,4 @@
-{
+* {
     box-sizing: border-box;
 }
 
@@ -161,29 +161,16 @@ a {
 a:hover {
     color: white;
 }
-
-.contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.contact-form label {
-    color: #39FF14;
-    font-weight: bold;
-}
-
 .contact-form input,
 .contact-form textarea {
-    background-color: #FF1493;
-    color: #39FF14;
-    border: 2px solid #FF1493;
+    background-color: #B8FFB8;
+    color: black;
+    border: 2px solid #39FF14;
     padding: 10px;
     border-radius: 8px;
     box-shadow:
-        0 0 8px #FF1493,
-        0 0 15px #FF1493,
-        0 0 25px #FF1493;
+        0 0 8px #39FF14,
+        0 0 15px #39FF14;
     transition:
         border-color 0.3s ease,
         box-shadow 0.3s ease;
@@ -191,30 +178,28 @@ a:hover {
 
 .contact-form input::placeholder,
 .contact-form textarea::placeholder {
-    color: #B8FFB8;
+    color: #444;
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
-    border-color: #FF69B4;
     outline: none;
+    border-color: #66FF66;
     box-shadow:
-        0 0 15px #FF1493,
-        0 0 30px #FF1493,
-        0 0 45px #FF1493,
-        0 0 60px #FF1493;
+        0 0 12px #39FF14,
+        0 0 25px #39FF14,
+        0 0 40px #39FF14;
 }
 
 .contact-form input[type="submit"] {
-    background-color: #FF1493;
-    color: #39FF14;
+    background-color: #39FF14;
+    color: black;
     font-weight: bold;
     cursor: pointer;
-    border: 2px solid #FF1493;
+    border: 2px solid #39FF14;
     box-shadow:
-        0 0 10px #FF1493,
-        0 0 20px #FF1493,
-        0 0 35px #FF1493;
+        0 0 10px #39FF14,
+        0 0 20px #39FF14;
     transition:
         background-color 0.3s ease,
         transform 0.3s ease,
@@ -222,12 +207,11 @@ a:hover {
 }
 
 .contact-form input[type="submit"]:hover {
-    background-color: #FF69B4;
+    background-color: #66FF66;
     transform: scale(1.03);
     box-shadow:
-        0 0 15px #FF69B4,
-        0 0 30px #FF69B4,
-        0 0 50px #FF69B4;
+        0 0 15px #66FF66,
+        0 0 30px #66FF66;
 }
 
 footer {
@@ -257,4 +241,42 @@ footer {
     nav ul {
         flex-direction: row;
     }
+}
+.feature-card {
+    border: 2px solid #39FF14;
+    background-color: #111111;
+    color: #39FF14;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 12px;
+    box-shadow: 0 0 12px #39FF14;
+}
+.dark-mode {
+    background: #f4f4f4;
+    color: black;
+}
+
+.dark-mode header,
+.dark-mode nav,
+.dark-mode section,
+.dark-mode footer {
+    background-color: white;
+    color: black;
+    border-color: #39FF14;
+}
+
+.dark-mode h1,
+.dark-mode h2,
+.dark-mode p,
+.dark-mode li {
+    color: black;
+}
+
+.dark-mode a {
+    color: green;
+}
+
+.dark-mode .feature-card {
+    background-color: #d8ffd8;
+    color: black;
 }

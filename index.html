@@ -11,6 +11,10 @@
     <title>Cameron Mason Professional Page</title>
 
     <link rel="stylesheet" href="styles.css">
+    <label>
+        <input type="checkbox" id="darkModeToggle">
+        Dark Mode
+    </label>
 </head>
 
 <body>
@@ -39,6 +43,21 @@
                 Technology with a concentration in Software Development and
                 AI/Data Analytics.
             </p>
+            <h3>Skills and Technologies</h3>
+            <ul id="skillsList"></ul>
+        </section>
+        <section id="featured">
+            <h2>Featured Content</h2>
+            <div id="universityResources" class="feature-card">
+                <h3>University Resources</h3>
+                <p><a href="https://www.ecpi.edu/programs/information-technology-bachelor-degree" target="_blank">ECPI Information Technology Program</a></p>
+            </div>
+            <div id="personalProjects" class="feature-card">
+                <h3>Personal Projects</h3>
+                <a href="https://am0019.github.io/WebDesign/" target="_blank">
+                    <img src="bike-app.png.png" alt="Bike Trails Project">
+                </a>
+            </div>
         </section>
 
         <section id="projects">
@@ -139,7 +158,32 @@
     <footer>
         <p>&copy; 2026 Cameron Mason. All rights reserved.</p>
     </footer>
-
+<script> //adding list of skills
+    const skills = ["HMTL", "C++", "SCRUM", "Databases", "Github" ];
+    const skillsList = document.getElementById("skillsList");
+    skills.forEach(function(skill) {
+        const listItem = document.createElement("li");
+        listItem.textContent = skill;
+        skillsList.appendChild(listItem);
+    });
+    const projects = document.querySelectorAll("#projects article, #projects div, #projects .project");
+    const universityResources = document.getElementById("universityResources");
+    if (projects.length < 3) {
+        universityResources.style.display = "block";
+    } else {
+        universityResources.style.display = "none";
+    }
+    const darkModeToggle = document.getElementById("darkModeToggle"); //darkModeToggle, inverts to lighter colors because page is already dark
+    darkModeToggle.addEventListener("change", function() {
+        document.body.classList.toggle("dark-mode");
+    });
+    const contactForm = document.getElementById("contact-form");
+    contactForm.addEventListener("submit", function(event) {
+        event.preventDefault();
+        const name = document.getElementById("name").value;
+        alert("Thank you, " + name + ", your message has been sent.");
+    })
+</script>
 </body>
 
 </html>
