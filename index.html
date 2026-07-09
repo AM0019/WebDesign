@@ -1,27 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Project homepage for Cameron Mason">
     <meta name="keywords" content="homepage, projects, contact, GitHub Pages">
     <meta name="author" content="Cameron Mason">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Cameron Mason Professional Page</title>
-
     <link rel="stylesheet" href="styles.css">
-    <label>
+</head>
+<body>
+    <div id="notification"></div>
+    <label class="toggle-label">
         <input type="checkbox" id="darkModeToggle">
         Dark Mode
     </label>
-</head>
-
-<body>
-
     <header>
         <h1>Welcome to My Homepage</h1>
-
         <nav>
             <ul>
                 <li><a href="#about">About</a></li>
@@ -30,12 +25,9 @@
             </ul>
         </nav>
     </header>
-
     <main>
-
         <section id="about">
             <h2>About</h2>
-
             <p>
                 Howdy! My name is Cameron Mason. This homepage was created
                 for my Web Design course using HTML, CSS, and GitHub Pages.
@@ -55,24 +47,19 @@
             <div id="personalProjects" class="feature-card">
                 <h3>Personal Projects</h3>
                 <a href="https://am0019.github.io/WebDesign/" target="_blank">
-                    <img src="bike-app.png.png" alt="Bike Trails Project">
+                    <img src="bike-app.png" alt="Bike Trails Project">
                 </a>
             </div>
         </section>
-
         <section id="projects">
             <h2>Projects</h2>
-
             <table>
-
                 <caption>Featured Development Projects</caption>
-
                 <colgroup>
                     <col class="firstColumn">
                     <col>
                     <col class="thirdColumn">
                 </colgroup>
-
                 <thead>
                     <tr>
                         <th>Project Name</th>
@@ -80,43 +67,34 @@
                         <th>Project Image</th>
                     </tr>
                 </thead>
-
                 <tbody>
-
                     <tr>
                         <td>Car Payment Calculator App</td>
-
                         <td>
                             Android application that calculates monthly car
                             payments based on loan amount, interest rate,
                             and loan term. The application validates user
                             input and displays estimated payment information.
                         </td>
-
                         <td>
                             <img src="car-payment.png"
                                  alt="Car Payment Calculator App">
                         </td>
                     </tr>
-
                     <tr>
                         <td>Local Bike Trail Explorer</td>
-
                         <td>
                             Mobile application concept designed to help users
                             discover local bike trails, track ride progress,
                             review trail conditions, and share information
                             with other cyclists.
                         </td>
-
                         <td>
                             <img src="bike-app.png"
                                  alt="Bike Trail Explorer App">
                         </td>
                     </tr>
-
                 </tbody>
-
                 <tfoot>
                     <tr>
                         <td colspan="3">
@@ -125,64 +103,68 @@
                         </td>
                     </tr>
                 </tfoot>
-
             </table>
-
         </section>
         <section id="contact">
             <h2>Contact</h2>
-
             <p>
                 You can contact me through my school email: cammas4974@students.ecpi or view additional
                 work through my GitHub repositories.
             </p>
-
-            <form class="contact-form" action="#" method="post">
+            <form id="contactForm" class="contact-form" action="#" method="post">
                 <label for="senderName">Name</label>
                 <input type="text" id="senderName" name="senderName" required>
-
                 <label for="email">Email Address</label>
                 <input type="email" id="email" name="email" required>
-
                 <label for="subject">Subject</label>
                 <input type="text" id="subject" name="subject">
-
                 <label for="message">Message</label>
                 <textarea id="message" name="message" rows="5"></textarea>
-
                 <input type="submit" value="Send Message">
             </form>
+            <p id="formStatus"></p>
         </section>
     </main>
-
     <footer>
         <p>&copy; 2026 Cameron Mason. All rights reserved.</p>
     </footer>
-<script> //adding list of skills
-    const skills = ["HMTL", "C++", "SCRUM", "Databases", "Github" ];
+<script>
+    const skills = ["HTML", "C++", "SCRUM", "Databases", "GitHub"];
     const skillsList = document.getElementById("skillsList");
     skills.forEach(function(skill) {
         const listItem = document.createElement("li");
         listItem.textContent = skill;
         skillsList.appendChild(listItem);
     });
-    const projects = document.querySelectorAll("#projects article, #projects div, #projects .project");
-    const universityResources = document.getElementById("universityResources");
-    if (projects.length < 3) {
-        universityResources.style.display = "block";
-    } else {
-        universityResources.style.display = "none";
-    }
-    const darkModeToggle = document.getElementById("darkModeToggle"); //darkModeToggle, inverts to lighter colors because page is already dark
+    const projectsSection = document.getElementById("projects");
+    const recentProject = document.createElement("p");
+    recentProject.innerHTML = "<strong>Recent Project:</strong> I updated this portfolio page with JavaScript DOM methods, a dark mode toggle, and a timed contact form confirmation.";
+    projectsSection.appendChild(recentProject);
+    const mainHeading = document.querySelector("h1");
+    mainHeading.textContent = "Cameron Mason's Professional Portfolio";
+    const aboutSection = document.getElementById("about");
+    aboutSection.classList.add("highlight-section");
+    setTimeout(function() {
+        const notification = document.getElementById("notification");
+        notification.textContent = "Thanks for visiting my portfolio page!";
+        notification.classList.add("show-notification");
+    }, 1500);
+    const darkModeToggle = document.getElementById("darkModeToggle");
     darkModeToggle.addEventListener("change", function() {
         document.body.classList.toggle("dark-mode");
     });
-    const contactForm = document.getElementById("contact-form");
+    const contactForm = document.getElementById("contactForm");
+    const formStatus = document.getElementById("formStatus");
     contactForm.addEventListener("submit", function(event) {
         event.preventDefault();
-        const name = document.getElementById("name").value;
-        alert("Thank you, " + name + ", your message has been sent.");
-    })
+        formStatus.textContent = "Sending message...";
+        formStatus.className = "loading-message";
+        setTimeout(function() {
+            formStatus.textContent = "Message sent successfully!";
+            formStatus.className = "success-message";
+            contactForm.reset();
+        }, 2500);
+    });
 </script>
 </body>
 
