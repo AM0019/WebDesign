@@ -10,6 +10,15 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<div id="welcomeModal" class="modal">
+    <div class="modal-content">
+        <h2>Welcome!</h2>
+        <p>This page is still in development.</p>
+        <button id="closeModal">
+            Close
+        </button>
+    </div>
+</div>
     <div id="notification"></div>
     <label class="toggle-label">
         <input type="checkbox" id="darkModeToggle">
@@ -120,7 +129,14 @@
                 <input type="text" id="subject" name="subject">
                 <label for="message">Message</label>
                 <textarea id="message" name="message" rows="5"></textarea>
-                <input type="submit" value="Send Message">
+<div class="tooltip">
+<input
+type="submit"
+value="Send Message">
+<span class="tooltipText">
+Click to send me a message.
+</span>
+</div>
             </form>
             <p id="formStatus"></p>
         </section>
@@ -149,11 +165,22 @@
         notification.textContent = "Thanks for visiting my portfolio page!";
         notification.classList.add("show-notification");
     }, 1500);
-    const darkModeToggle = document.getElementById("darkModeToggle");
-    darkModeToggle.addEventListener("change", function() {
-        document.body.classList.toggle("dark-mode");
-    });
-    const contactForm = document.getElementById("contactForm");
+const darkModeToggle =
+document.getElementById("darkModeToggle");
+if(localStorage.getItem("darkMode") === "enabled"){
+document.body.classList.add("dark-mode");
+darkModeToggle.checked = true;
+}
+darkModeToggle.addEventListener("change",
+function(){
+if(darkModeToggle.checked){
+document.body.classList.add("dark-mode");
+localStorage.setItem("darkMode","enabled");}
+else{
+document.body.classList.remove("dark-mode");
+localStorage.setItem("darkMode","disabled");}
+});    
+const contactForm = document.getElementById("contactForm");
     const formStatus = document.getElementById("formStatus");
     contactForm.addEventListener("submit", function(event) {
         event.preventDefault();
@@ -165,6 +192,13 @@
             contactForm.reset();
         }, 2500);
     });
+    const welcomeModal =
+document.getElementById("welcomeModal");
+const closeModal =
+document.getElementById("closeModal");
+closeModal.addEventListener("click",
+function(){
+welcomeModal.style.display="none";});
 </script>
 </body>
 
