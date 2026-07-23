@@ -435,3 +435,29 @@ transition:.3s;
 visibility:visible;
 opacity:1;
 }
+#projectContainer{
+    display:grid;
+    grid-template-columns:
+    repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+.project-card{
+    border:2px solid #d1b77d;
+    border-radius:12px;
+    padding:20px;
+    background-color:#fffdf7;
+}
+.project-card img{
+    width:100%;
+    height:200px;
+    object-fit:cover;
+}
+.project-link{
+    display:inline-block;
+    margin-top:10px;
+    padding:10px;
+    background-color:#d1b77d;
+    text-decoration:none;
+    border-radius:8px;
+    font-weight:bold;
+}

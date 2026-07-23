@@ -12,7 +12,7 @@
 <body>
 <div id="welcomeModal" class="modal">
     <div class="modal-content">
-        <h2>Welcome!</h2>
+        <h2>Hello!</h2>
         <p>This page is still in development.</p>
         <button id="closeModal">
             Close
@@ -62,57 +62,7 @@
         </section>
         <section id="projects">
             <h2>Projects</h2>
-            <table>
-                <caption>Featured Development Projects</caption>
-                <colgroup>
-                    <col class="firstColumn">
-                    <col>
-                    <col class="thirdColumn">
-                </colgroup>
-                <thead>
-                    <tr>
-                        <th>Project Name</th>
-                        <th>Description</th>
-                        <th>Project Image</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Car Payment Calculator App</td>
-                        <td>
-                            Android application that calculates monthly car
-                            payments based on loan amount, interest rate,
-                            and loan term. The application validates user
-                            input and displays estimated payment information.
-                        </td>
-                        <td>
-                            <img src="car-payment.png"
-                                 alt="Car Payment Calculator App">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Local Bike Trail Explorer</td>
-                        <td>
-                            Mobile application concept designed to help users
-                            discover local bike trails, track ride progress,
-                            review trail conditions, and share information
-                            with other cyclists.
-                        </td>
-                        <td>
-                            <img src="bike-app.png"
-                                 alt="Bike Trail Explorer App">
-                        </td>
-                    </tr>
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <td colspan="3">
-                            Additional projects will be added as I continue
-                            developing my programming and web design skills.
-                        </td>
-                    </tr>
-                </tfoot>
-            </table>
+            <div id="projectContainer"></div>
         </section>
         <section id="contact">
             <h2>Contact</h2>
@@ -134,7 +84,7 @@
 type="submit"
 value="Send Message">
 <span class="tooltipText">
-Click to send me a message.
+Click to send me a message!
 </span>
 </div>
             </form>
@@ -152,6 +102,59 @@ Click to send me a message.
         listItem.textContent = skill;
         skillsList.appendChild(listItem);
     });
+const bikeTrailsProject = {
+    title: "Local Bike Trail Explorer",
+    summary: "Displays local Richmond bike trails and trail information.",
+    imageUrl: "bike-app.png",
+    repositoryUrl: "https://github.com/AM0019/Mobile-App-Design"
+};
+const carPaymentProject = {
+    title: "Electric Car Payment Calculator",
+    summary: "Calculates monthly payments for electric vehicle financing.",
+    imageUrl: "car-payment.png",
+    repositoryUrl: "https://github.com/AM0019/Mobile-App-Design"
+};
+const photoGalleryProject = {
+    title: "JavaScript Photo Gallery",
+    summary: "Displays a featured image and several photos in an interactive gallery.",
+    imageUrl: "photo-gallery.png",
+    repositoryUrl: "https://github.com/AM0019/Mobile-App-Design"
+};
+const projectArray = [
+    bikeTrailsProject,
+    carPaymentProject,
+    photoGalleryProject
+];
+if (sessionStorage.getItem("portfolioProjects") === null) {
+    sessionStorage.setItem(
+        "portfolioProjects",
+        JSON.stringify(projectArray)
+    );
+}
+const storedProjects = JSON.parse(
+    sessionStorage.getItem("portfolioProjects")
+);
+const projectContainer = document.getElementById("projectContainer");
+storedProjects.forEach(function(project){
+    const projectCard = document.createElement("article");
+    projectCard.classList.add("project-card");
+    const projectImage = document.createElement("img");
+    projectImage.src = project.imageUrl;
+    projectImage.alt = project.title;
+    const projectTitle = document.createElement("h3");
+    projectTitle.textContent = project.title;
+    const projectSummary = document.createElement("p");
+    projectSummary.textContent = project.summary;
+    const projectLink = document.createElement("a");
+    projectLink.href = project.repositoryUrl;
+    projectLink.textContent = "View Repository";
+    projectLink.target = "_blank";
+    projectCard.appendChild(projectImage);
+    projectCard.appendChild(projectTitle);
+    projectCard.appendChild(projectSummary);
+    projectCard.appendChild(projectLink);
+    projectContainer.appendChild(projectCard);
+});
     const projectsSection = document.getElementById("projects");
     const recentProject = document.createElement("p");
     recentProject.innerHTML = "<strong>Recent Project:</strong> I updated this portfolio page with JavaScript DOM methods, a dark mode toggle, and a timed contact form confirmation.";
@@ -196,9 +199,20 @@ const contactForm = document.getElementById("contactForm");
 document.getElementById("welcomeModal");
 const closeModal =
 document.getElementById("closeModal");
-closeModal.addEventListener("click",
-function(){
-welcomeModal.style.display="none";});
+function hideModal() {
+    welcomeModal.style.display = "none";
+}
+closeModal.addEventListener("click", hideModal);
+welcomeModal.addEventListener("click", function(event) {
+    if (!event.target.closest(".modal-content")) {
+        hideModal();
+    }
+});
+document.addEventListener("keydown", function(event) {
+    if (event.key === "Escape") {
+        hideModal();
+    }
+});
 </script>
 </body>
 
